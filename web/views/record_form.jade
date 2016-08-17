@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  p Record #{title}
+
+  div
+    form(action='/record', method='post')
+      div(data-role='fieldcontain')
+        fieldset(data-role='controlgroup')
+          label(for='countdown') count down
+            input(id='countdown',type='text',value='',name='countdown')
+      div(data-role='fieldcontain')
+        fieldset(data-role='controlgroup')
+          label(for='bla') bla
+            input(id='bla',type='text',value='',placeholder='',name='bla')
+      div(data-role='fieldcontain')   
+        input(type='submit',value='Sign Up',data-transition='fade', data-theme='c')
