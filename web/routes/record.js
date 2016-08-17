@@ -14,8 +14,12 @@ router.post('/', function(req, res) {
   var countdown = req.body.countdown || 5;
   var scriptName = path.join(__dirname, '../../game0.py')
   console.log(scriptName);
-  var process = spawn('python', [scriptName, countdown]);
-  process.stdout.on('data', function (data) {
+  var python = spawn('python', [scriptName, countdown]);
+  python.stdout.on('data', function (data) {
+    console.log(data);
+  });
+  python.on('close', function (code) {
+    console.log("exit with:" + code);
     res.render('record_start', { title: 'Done!' });
   });
 });
