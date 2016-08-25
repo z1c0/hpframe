@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hpframe - {{ title }}</title>
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/bower_components/bootswatch/darkly/bootstrap.min.css">
+  <link rel="stylesheet" href="/bower_components/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#"><i class="fa fa-picture-o" aria-hidden="true"></i> Harry Potter Frame</a>
+      </div>
+    </div>
+  </nav>
+   
+  <div class="container">
+    {{{body}}}
+
+    <hr>
+    <footer>
+      <p>&copy; 2016 Wolfgang Ziegler</p>
+    </footer>
+  </div>
+  
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  {{{_sections.script}}}
+</body>
+
+</html>

@@ -1,18 +1,28 @@
 var express = require('express');
+var exphbs = require('express-handlebars');
 var path = require('path');
 var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var index = require('./routes/index');
 var record = require('./routes/record');
 
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+var hbs = exphbs.create({
+  defaultLayout: "main",
+  extname: ".hbs",
+  helpers: {
+    section: function(name, options) { 
+      if (!this._sections) this._sections = {};
+        this._sections[name] = options.fn(this); 
+        return null;
+      }
+  }    
+});
+app.engine('hbs', hbs.engine);
+app.set('view engine', '.hbs');
 
 app.use(favicon());
 app.use(logger('dev'));
