@@ -1,24 +1,24 @@
 import sys
 import pygame
-#from picamera import PiCamera
+from picamera import PiCamera
 from time import sleep
 
-#camera = PiCamera()
+camera = PiCamera()
 
 countDown = int(sys.argv[1])
 print countDown
 
 pygame.init()
 
-screen = pygame.display.set_mode((800, 600)) #, pygame.FULLSCREEN)
+screen = pygame.display.set_mode((800, 600), pygame.FULLSCREEN)
 pygame.display.set_caption("bla")
 
 pygame.draw.rect(screen, (0, 128, 255), pygame.Rect(30, 30, 60, 60))
 pygame.display.flip()
 
-#camera.start_preview()
-#sleep(5)
-#camera.stop_preview()
+camera.start_preview()
+sleep(5)
+camera.stop_preview()
 
 # render text
 myfont = pygame.font.SysFont("monospace", 35)
