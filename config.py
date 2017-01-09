@@ -1,1 +1,1 @@
-VIDEO_DIR = '/hom/pi/videos'
+VIDEO_DIR = '/home/pi/videos'

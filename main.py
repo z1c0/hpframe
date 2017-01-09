@@ -9,8 +9,9 @@ camera = PiCamera()
 
 
 def RecordVideo(name, initialDelay, duration):
-  fullName = config.VIDEO_DIR + name
+  fullName = config.VIDEO_DIR + "/" + name + ".h264"
   print fullName
+
   # countDown
   for i in range(initialDelay, -1, -1):
     label = myfont.render(str(i), 1, (0, 0, 200), (255, 255, 255))
@@ -28,8 +29,8 @@ def RecordVideo(name, initialDelay, duration):
 
 
 
-countDown = int(sys.argv[1])
-duration = int(sys.argv[2])
+#countDown = int(sys.argv[1])
+#duration = int(sys.argv[2])
 #print countDown
 
 pygame.init()
@@ -44,7 +45,7 @@ myfont = pygame.font.SysFont("monospace", 35)
 #sleep(1)
 
 RecordVideo("first", 5, 5)
-RecordVideo("first", 3, 15)
+RecordVideo("second", 3, 15)
 
 
 pygame.quit()
