@@ -1,5 +1,8 @@
 import sys
+from os.path import join
 from time import sleep
+import glob
+import subprocess
 import config
 import pygame
 from picamera import PiCamera
@@ -9,7 +12,7 @@ camera = PiCamera()
 
 
 def RecordVideo(name, initialDelay, duration):
-  fullName = config.VIDEO_DIR + "/" + name + ".h264"
+  fullName = join(config.VIDEO_DIR, name + ".h264")
   print fullName
 
   # countDown
@@ -20,14 +23,22 @@ def RecordVideo(name, initialDelay, duration):
     sleep(1)
 
   # now record video
+  camera.capture(fullName + '.jpg')
   camera.start_preview()
+  camera.brightness = 40
   camera.start_recording(fullName)
   sleep(duration)
   camera.stop_recording()
   camera.stop_preview()
 
 
-
+def LoopVideos():
+  #while True:
+    files = glob.glob(join(config.VIDEO_DIR, "*.mp4"))
+    for f in files:
+      process = subprocess.Popen(['omxplayer', f])
+      process.wait()
+    #sleep(5);
 
 #countDown = int(sys.argv[1])
 #duration = int(sys.argv[2])
@@ -44,9 +55,10 @@ myfont = pygame.font.SysFont("monospace", 35)
 #pygame.display.flip()
 #sleep(1)
 
-RecordVideo("first", 5, 5)
-RecordVideo("second", 3, 15)
-
+#RecordVideo("first", 5, 5)
+#RecordVideo("second", 3, 15)
+RecordVideo("new", 5, 5)
+#LoopVideos();
 
 pygame.quit()
 quit()
